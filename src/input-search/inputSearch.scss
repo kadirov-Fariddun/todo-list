@@ -1,0 +1,64 @@
+// перемынные 
+$colorPurple:#6C63FF;
+$colorWhite:#f7f7f7;
+$colorBlack:#252525;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap');
+$ftfkanit:'Kanit', sans-serif;
+.search-input{
+    max-width: 550px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    height: 38px;
+    
+    input{
+        width: 100%;
+        z-index: 2;
+        border:1px solid $colorPurple;
+        border-radius: 5px;
+        padding: 11px 16px;
+        outline: none;
+        font-family: $ftfkanit;
+        font-size: 16px;
+        &::placeholder{
+            font-size: 16px;
+            font-weight: 400;
+            color: #C3C1E5;
+            font-family: $ftfkanit;
+        }
+    }
+    .search-btn{
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        height: calc(100% - 2px);
+        width: 50px;
+        cursor: pointer;
+        z-index: 3;
+        border: none;
+        border-radius: 5px;
+        background-color: #fff;
+        svg{
+            fill: $colorPurple;
+        }
+    }
+}
+body.dark{
+    .search-input{
+        input{
+            background-color: $colorBlack;
+            border: 1px solid $colorWhite;
+            color: $colorWhite;
+            &::placeholder{
+                color: #666666;
+            }
+        }
+    }
+    //.search-btn
+    .search-btn{
+        background-color: $colorBlack;
+        svg{
+            fill: $colorWhite;
+        }
+    }
+}

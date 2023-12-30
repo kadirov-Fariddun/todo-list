@@ -1,0 +1,129 @@
+// перемынные 
+$colorPurple:#6C63FF;
+$colorWhite:#f7f7f7;
+$colorBlack:#252525;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap');
+$ftfkanit:'Kanit', sans-serif;
+// default null
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    padding: 0 20px;
+}
+li{
+    list-style-type: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    display: inline-block;
+    color: $colorBlack;
+}
+.container{
+    max-width: 750px;
+    width: 100%;
+    margin: 0 auto;
+}
+// title
+body.dark{
+    background-color: $colorBlack;
+    .title{
+        color: $colorWhite;
+    }
+}
+.title{
+    font-family: $ftfkanit;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    margin: 40px 0 20px 0;
+    @media(max-width:400px){
+        margin-top: 60px;
+    }
+}
+.header{
+    &-flex{
+        display: flex;
+        column-gap: 20px;
+        @media(max-width:700px){
+            justify-content: space-between;
+        }
+    }
+}
+.select-filter{
+    display: block;
+    width: 130px;
+    height: 38px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .2s;
+    @media(max-width:700px){
+        order: 3;
+        // min-width: 100%;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
+    }
+    @media(max-width:400px){
+        top: 10px;
+    }
+    &.active{
+        transition: .2s;
+        height: 152px;
+    }
+    //item
+    &-item{
+        height:38px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        background-color: $colorPurple;
+        padding: 0 10px;
+        font-family: $ftfkanit;
+        color: #f7f7f7;
+        svg{
+            margin-left: auto;
+            fill: $colorWhite;
+        }
+    }
+    // .btn-bottom{
+
+    // }
+}
+.btn-dark{
+    min-width: 38px;
+    height: 38px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: $colorPurple;
+    border-radius: 5px;
+    @media(max-width:700px){
+        order: 2;
+    }
+    @media(max-width:400px){
+        position: absolute;
+        top: 10px;
+        right: 160px;
+    }
+    svg{
+        fill: $colorWhite;
+    }
+}
+// todos
+.todos{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

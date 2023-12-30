@@ -1,0 +1,324 @@
+// перемынные 
+$colorPurple:#6C63FF;
+$colorWhite:#f7f7f7;
+$colorBlack:#252525;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap');
+$ftfkanit:'Kanit', sans-serif;
+// default null
+
+.todo{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    max-width: 550px;
+    width: 100%;
+    transition: .2s;
+    padding: 17px 0;
+    border-bottom: 0.5px solid rgba(108, 99, 255, .4);
+    //complete
+    .complete{
+        min-width: 25px;
+        min-height: 25px;
+        border-radius: 2px;
+        border: 1px solid $colorPurple;
+        position: relative;
+        margin-right: 17px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media(max-width:450px){
+            min-width: 20px;
+            min-height: 20px;
+        }
+        svg{
+            fill: #f7f7f7;
+            display: none;
+        }
+        input{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        &.active{
+            background-color: $colorPurple;
+            svg{
+                display: block;
+                @media(max-width:450px){
+                    width: 18px !important;
+                    height: 18px !important;
+                }
+            }
+        }
+    }
+    //title
+    &-title{
+        font-family: $ftfkanit;
+        color: $colorBlack;
+        font-weight: 500;
+        font-size: 20px;
+        margin-right: auto;
+        position: relative;
+        transition: .2s;
+        word-wrap: break-word;
+        max-width: 300px;
+        @media(max-width:500px){
+            max-width: 200px;
+            font-size: 17px;
+        }
+        @media(max-width:370px){
+            max-width: 170px;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 1px;
+            width: 100%;
+            background-color: #8e8e8e;
+            width: 0%;
+            transition: .2s;
+        }
+    }
+    &:hover{
+        .todo-btns{
+            opacity: 1;
+        }
+    }
+    //btns
+    &-btns{
+        display: flex;
+        column-gap: 15px;
+        opacity: 0;
+        @media(max-width:700px){
+            opacity: 1;
+        }
+        button{
+            cursor: pointer;
+            width: 25px;
+            border: none;
+            outline: none;
+            background-color:#fff;
+            svg{
+                fill: grey;
+            }
+        }
+        margin-left: 20px;
+        @media(max-width:400px){
+            margin-left: 10px;
+            column-gap: 10px;
+        }
+    }
+    //  finish
+    &.finish{
+        transition: .2s;
+        .todo-title{
+            transition: .2s;
+            color: #8e8e8e;
+            font-weight: 400;
+            &::before{
+                transition: .2s;
+                width: 100%;
+            }
+        }
+    }
+}
+.add-btn{
+    position: fixed;
+    bottom: 32px;
+    right: 19%;
+    cursor: pointer;
+    @media(max-width:700px){
+        right: 7%;
+    }
+    transition: .2s;
+    &:hover{
+        transition: .2s;
+        transform: translateY(-2px);
+    }
+    &:active{
+        transition: .2s;
+        transform: translateY(0px);
+    }
+}
+// form
+.add-form{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color:rgba(0,0,0,.6);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    &.show{
+        display: flex;
+    }
+    //wrapper
+    &-wrapper{
+        background-color: #fff;
+        padding: 18px 30px;
+        border-radius: 16px;
+        @media(max-width:450px){
+            padding: 20px;
+        }
+        @media(max-width:450px){
+            max-width: 290px;
+            width: 100%;
+        }
+    }
+    // title
+    &-title{
+        margin-bottom: 25px;
+        color: $colorBlack;
+        font-family: $ftfkanit;
+        font-weight: 500;
+        font-size: 24px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .add-form-input{
+        width: 440px;
+        @media(max-width:550px){
+            width: 340px;
+        }
+        @media(max-width:450px){
+            max-width: 300px;
+            width: 100%;
+        }
+    }
+    // btns
+    &-btns{
+        margin-top: 128px;
+        display: flex;
+        justify-content: space-between;
+        button{
+            width: 110px;
+            height: 38px;
+            border-radius: 5px;
+            cursor: pointer;
+           font-family:$ftfkanit;
+           color: $colorWhite; 
+           text-transform: uppercase;
+           font-size: 18px;
+           font-weight: 500;
+           border: 1px solid $colorPurple;
+           color: $colorPurple;
+           transition: .2s;
+           &:hover{
+            transition: .2s;
+            transform: translateY(-2px);
+           }
+           &:active{
+            transform: translateY(0px);
+           }
+           &:last-child{
+            background-color: $colorPurple;
+            color:$colorWhite;
+           }
+        }
+    }
+}
+//edit
+.edit-title{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.edit-input{
+    height:30px;
+    background-color:rgba(0,0,0,.15);
+    outline: none;
+    border: none;
+    font-family: $ftfkanit;
+    font-size: 20px;
+    padding: 0 5px;
+    @media(max-width:500px){
+        max-width: 100%;
+        width: 100%;
+        font-size: 17px;
+    }
+}
+.edit-btn{
+    height: 30px;
+    width: 30px;
+    background-color:$colorPurple;
+    border: none;
+    cursor: pointer;
+    svg{
+        fill: $colorWhite;
+    }
+}
+.empty{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 35px;
+    flex-direction: column;
+    div{
+        width: 221px;
+        height: 174px;
+        background-image: url('../images/empty.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    // img{
+    //     width: 221px;
+    //     height: 174px;
+    // }
+    &-title{
+        margin-top: 20px;
+        font-family: $ftfkanit;
+        font-weight: 400;
+        font-size: 20px;
+        color: $colorBlack;
+    }
+}
+body.dark{
+    .todo-title{
+        color: $colorWhite;
+    }
+    .todo-btns{
+        button{
+            background-color: $colorBlack;
+            svg{
+                fill: grey;
+            }
+        }
+    }
+    //.edit-input
+    .edit-input{
+        background-color: $colorWhite;
+    }
+    // add form
+    .add-form-wrapper{
+        background-color: $colorBlack;
+        border: 1px solid $colorWhite;
+    }
+    .add-form-title{
+        color: $colorWhite;
+    }
+    .add-form-btns{
+        button:first-child{
+            background-color: $colorBlack;
+        }
+    }
+    // empty
+    .empty{
+        div{
+            background-image: url('../images/empty-dark.png');
+        }
+        &-title{
+            color: #f7f7f7;
+        }
+    }
+}

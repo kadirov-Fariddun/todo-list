@@ -64,7 +64,7 @@ $ftfkanit:'Kanit', sans-serif;
         position: relative;
         transition: .2s;
         word-wrap: break-word;
-        max-width: 300px;
+        max-width:350px;
         @media(max-width:500px){
             max-width: 200px;
             font-size: 17px;
@@ -233,13 +233,15 @@ $ftfkanit:'Kanit', sans-serif;
     column-gap: 5px;
 }
 .edit-input{
-    height:30px;
+    height:fit-content;
+    width: fit-content;
     background-color:rgba(0,0,0,.15);
     outline: none;
     border: none;
     font-family: $ftfkanit;
     font-size: 20px;
     padding: 0 5px;
+    resize: none;
     @media(max-width:500px){
         max-width: 100%;
         width: 100%;

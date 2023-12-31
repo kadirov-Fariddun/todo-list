@@ -6,7 +6,7 @@ import InputSearch from '../input-search/inputSearch';
 //styles
 import './todos.scss';
 //images
-import addBtn from '../images/add-btn.png';
+import addBtn from '../images/add-btn.svg';
 import emptyPng from '../images/empty.png';
 import emptyDarkPng from '../images/empty-dark.png';
 export default function Todo(props) {
@@ -86,16 +86,21 @@ export default function Todo(props) {
         <div className="todo-title">
           {todo.edit?
           <div className="edit-title">
-            <input className='edit-input' type='text' defaultValue={todo.title} onChange={(e)=>{
+            <textarea className='edit-input' type='text' defaultValue={todo.title} onChange={(e)=>{
               return setEditValue(e.target.value);
-            }}/>
+            }}></textarea>
             <button className='edit-btn' onClick={()=>{
               setAddInputValue(editValue);
               let newArr = [...todos];
               newArr.forEach(item=>{
                 if(item.id === todo.id){
+                  if(editValue.trim()!=''){
                   todo.title = editValue;
                   todo.edit = !todo.edit;
+                  }else{
+                    todo.edit = !todo.edit;
+                    return todo.title;
+                  }
                 }
               });
               return setTodos(newArr);
@@ -152,7 +157,10 @@ export default function Todo(props) {
      </div>
 }
     {/* add todo  */}
-    <div className={`add-form ${showForm?'show':''}`}>
+    <div className={`add-form ${showForm?'show':''}`}
+    onClick={(e)=>{
+      e.target.className == 'add-form show'?setShowForm(false):'';
+  }}>
         <div className="add-form-wrapper">
             <form onSubmit={(e)=>{
                 e.preventDefault();

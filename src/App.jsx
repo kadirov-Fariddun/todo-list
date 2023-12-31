@@ -38,22 +38,24 @@ function App() {
           <InputSearch onChange={(e)=>{setSearchValueDef(e.target.value)}} onClick={(e)=>{
             setSearchValue(searchValueDef);
           }} btnNone={false}/>
-          <ul className={`select-filter ${showFilter?'active':''}`}>
-            <li className="select-filter-item" onClick={()=>{
-              showFilter?setShowFilter(false):setShowFilter(true);
-            }}>
-              {valueFilter}
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className='btn-bottom'>
-              <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
-            </svg>
-            </li>
-            <li className="select-filter-item"
-             onClick={(e)=>{setValueFilter(e.target.textContent);setShowFilter(false)}}>All</li>
-            <li className="select-filter-item"
-            onClick={(e)=>{setValueFilter(e.target.textContent);setShowFilter(false)}}>Active</li>
-            <li className="select-filter-item"
-            onClick={(e)=>{setValueFilter(e.target.textContent);setShowFilter(false)}}>Completed</li>
-          </ul>
+          <div className="select-filter-wrapper">
+            <ul className={`select-filter ${showFilter?'active':''}`}>
+              <li className="select-filter-item" onClick={()=>{
+                showFilter?setShowFilter(false):setShowFilter(true);
+              }}>
+                {valueFilter}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className='btn-bottom'>
+                <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+              </svg>
+              </li>
+              <li className="select-filter-item"
+              onClick={(e)=>{setValueFilter(e.target.textContent);setShowFilter(false)}}>All</li>
+              <li className="select-filter-item"
+              onClick={(e)=>{setValueFilter(e.target.textContent);setShowFilter(false)}}>Active</li>
+              <li className="select-filter-item"
+              onClick={(e)=>{setValueFilter(e.target.textContent);setShowFilter(false)}}>Completed</li>
+            </ul>
+          </div>
           <button className="btn-dark" onClick={()=>dark?setDark(false):setDark(true)}>
           {
             dark?

@@ -60,8 +60,9 @@ export default function Todo(props) {
   return (
     <>
     {
+      (searchValue!=''?searchFilterTodos:
       (valueFilter.toLowerCase()=='all'?todos:valueFilter.toLowerCase()=='active'?activeTodos:
-      valueFilter.toLowerCase()=='completed'?completedTodos:[]).length !== 0?
+      valueFilter.toLowerCase()=='completed'?completedTodos:[])).length !== 0?
     <div className="todos">
     {/* <Loading /> */}
     {
@@ -195,7 +196,10 @@ export default function Todo(props) {
         </div>
       </div>
       <div className="add-btn" onClick={()=>!showForm?setShowForm(true):setShowForm(false)}>
-        <img src={addBtn} alt="description" />
+        {/* <img src={addBtn} alt="description" /> */}
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+          <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+        </svg>
       </div>
       </>
   )
